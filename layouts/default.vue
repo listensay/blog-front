@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="layout m-auto shadow bg-red-500  bg-white rounded">
+  <div class="layout m-auto shadow bg-red-500 bg-white rounded my-8">
     <AppHeader></AppHeader>
     <div>
       <slot></slot>

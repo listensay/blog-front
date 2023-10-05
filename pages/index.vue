@@ -12,10 +12,12 @@ const { articles } = storeToRefs(homeStore)
       v-for="article in articles"
       :key="article.post_id"
     >
-      <Article 
-        :article="article"
-      >
-      </Article>
+      <NuxtLink :to="'article/'+article.post_id">
+        <Article 
+          :article="article"
+        >
+        </Article>
+      </NuxtLink>
     </template>
 
   </div>
