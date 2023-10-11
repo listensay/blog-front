@@ -7,7 +7,7 @@ import { storeToRefs } from 'pinia';
 import useHomeStore from '~/store/home';
 
 const homeStore = useHomeStore()
-const { userinfo } = storeToRefs(homeStore)
+const { userinfo, userProfile } = storeToRefs(homeStore)
 </script>
 
 <template>
@@ -23,6 +23,19 @@ const { userinfo } = storeToRefs(homeStore)
         <div class="name font-bold text-xl text-gray-dark mb-1">{{ userinfo.nickname }}</div>
         <div class="email text-sm text-gray flex items-center mb-2"><el-icon style="margin-right: 5px"><Message /></el-icon> {{ userinfo.email }}</div>
         <div class="desc text-gray-dark text-sm">{{ userinfo.description }}</div>
+        <div class="authour-profiles">
+          <client-only>
+              <ul class="list mt-5 rounded-sm">
+                <li
+                  v-for="(profile, index) in userProfile?.profile" :key="index"
+                  class="item p-5 border-1 flex items-center"
+                >
+                  <i class="iconfont mr-2" :class="profile.icon"></i>
+                  <span class="first text-sm mr-2">{{ profile.first }} :</span> <span class="last text-sm">{{ profile.last }}</span>
+                </li>
+              </ul>
+          </client-only>
+        </div>
       </div>
     </div>
   </div>
@@ -55,6 +68,18 @@ const { userinfo } = storeToRefs(homeStore)
   .authour-info {
     .email {
       margin-bottom: 8px;
+    }
+
+    .authour-profiles {
+      .list {
+        border: 1px solid #eee;
+        .item {
+          border-bottom: 1px solid #eee;
+          &:last-child{
+            border-bottom: none;
+          }
+        }
+      }
     }
   }
 }

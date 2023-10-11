@@ -13,7 +13,14 @@ export default {
       }
     },
     colors: {
-      'blue': '#1fb6ff',
+      'primary': '#1d4ed8',
+      'black': '#1e293b',
+      'blue': {
+        50: '#eff6ff',
+        100: '#dbeafe',
+        200: '#bfdbfe',
+        300: '#93c5fd'
+      },
       'purple': '#7e5bef',
       'pink': '#ff49db',
       'orange': '#ff7849',
@@ -22,7 +29,13 @@ export default {
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
-      'white': '#fff'
+      'white': '#fff',
+      'emerald': {
+        50: '#ecfdf5',
+        100: '#d1fae5',
+        200: '#a7f3d0',
+        300: '#6ee7b7'
+      }
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],

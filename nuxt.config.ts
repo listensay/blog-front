@@ -4,7 +4,12 @@ export default defineNuxtConfig({
   devServer: {
     port: 8088
   },
-  css: ['normalize.css', '@/assets/css/tailwind.css', '@/assets/css/index.less'],
+  css: [
+    'normalize.css',
+    '@/assets/css/tailwind.css',
+    '@/assets/css/index.less',
+    '@/assets/font/iconfont.css'
+  ],
   build: {
     // 该文件需要进行Babel转义
     transpile: ['element-plus/es'],

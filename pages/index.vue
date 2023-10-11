@@ -1,9 +1,9 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import useHomeStore from '@/store/home'
-
 const homeStore = useHomeStore()
 const { articles } = storeToRefs(homeStore)
+homeStore.fetchUserProfile()
 </script>
 
 <template>

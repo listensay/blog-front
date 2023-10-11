@@ -7,6 +7,9 @@ export const useHomeAPI = () => {
     },
     getUserInfor: () => {
       return servers({ url: '/index/userinfo', method: 'get' })
-    }
+    },
+    getUserProfiles: () => {
+      return servers({ url: '/index/userProfile', method: 'get' })
+    },
   }
 }

@@ -26,15 +26,21 @@ export interface IUserInfor {
   bg: string
 }
 
+export interface IUserProfile {
+  profile : Array<any>
+}
+
 export interface IHomeState {
   articles?: IArticle[];
   userinfo?: IUserInfor;
+  userProfile?: IUserProfile;
 }
 
 const useHomeStore = defineStore('homeStore', {
   state: ():IHomeState  => ({
     articles: [],
-    userinfo: null
+    userinfo: null,
+    userProfile: null
   }),
   actions: {
     async fetchArticle() {
@@ -45,6 +51,11 @@ const useHomeStore = defineStore('homeStore', {
       const result = <any> await homeAPI.getUserInfor()
       const { userinfo } = result.data
       this.userinfo = userinfo
+    },
+    async fetchUserProfile() {
+      const result = <any> await homeAPI.getUserProfiles()
+      const { profiles } = result.data
+      this.userProfile = JSON.parse(profiles)
     }
   }
 })
