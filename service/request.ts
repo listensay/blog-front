@@ -1,47 +1,45 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/**
-*  nuxt项目目录/composables/http.ts
-*/
-//  基于useFetch()的网络请求封装
-import { ElMessage } from 'element-plus'
-// 全局基础URL
-const BASEURL: string = "http://127.0.0.1:3000";  // 全局后台服务器请求地址
+import { hash } from 'ohash'
 
-// 定义ts变量类型接口
-interface HttpParms {
-    baseURL?: string,  // 请求的基本URL，即后台服务器地址，（若服务器请求地址只有一个，可不填）
-    url: string,      // 请求api接口地址
-    method?: any,   // 请求方法
-    query?: any,       // 添加查询搜索参数到URL
-    body?: any         // 请求体
+const fetch = async (url: string, options?: any, headers?: any) => {
+
+  try {
+    const config = useRuntimeConfig() // 3.0正式版环境变量要从useRuntimeConfig里的public拿
+    const reqUrl = config.public.baseUrl + url // 你的接口地址
+    // 不设置key，始终拿到的都是第一个请求的值，参数一样则不会进行第二次请求
+    const key = hash(options + url)
+    // 可以设置默认headers例如
+    const customHeaders = { token: useCookie('token').value, ...headers }
+
+    const { data, error } = await useFetch(reqUrl, { ...options, key, headers: customHeaders })
+
+    const result = data.value as any
+
+    if (result?.code !== 2000) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: reqUrl,
+        message: error?.value?.message || '服务器内部错误',
+      })
+    }
+    return result
+  } catch (err) {
+    return Promise.reject(err)
+  }
+
 }
 
+export const get = (url: string, params?: any, headers?: any) => {
+  return fetch(url, { method: 'get', params }, headers)
+}
 
-export const servers = (obj: HttpParms) => {
-    const request = new Promise<void>((resolve, reject) => {
-        useFetch(
-            (obj.baseURL ?? BASEURL) + obj.url,
-            {
-                method: obj.method ?? "GET",
-                query: obj?.query ?? null,
-                body: obj?.body ?? null,
-                onRequestError({ request, options, error }) {
-                    // 处理请求错误
-                    ElMessage(error.message)
-                    reject(error)
-                },
-                onResponse({ request, response, options }) {
-                    // 处理响应数据
-                    resolve(response._data)
-                },
-                onResponseError({ request, response, options,error }) {
-                    // 处理响应错误
-                    ElMessage(error)
-                    reject(error)
-                }
-            },
+export const post = (url: string, params?: any, headers?: any) => {
+  return fetch(url, { method: 'post', body: params }, headers)
+}
 
-        )
-    })
-    return request;
+export const put = (url: string, params?: any, headers?: any) => {
+  return fetch(url, { method: 'put', body: params }, headers)
+}
+
+export const del = (url: string, params?: any, headers?: any) => {
+  return fetch(url, { method: 'delete', params }, headers)
 }

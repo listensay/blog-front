@@ -1,9 +1,9 @@
-import { servers } from '../request'
+import { get } from '../request'
 
 export const useArticleAPI = () => {
    return {
     getArticleDetal: (id: number) => {
-      return servers({ url: '/index/article', method: 'get', query: { post_id :id } })
+      return get('/index/article', { post_id :id })
     }
    }
 }

@@ -7,6 +7,8 @@ const { article } = toRefs(props)
 const dateFormat = (date) => {
   return useDayjs(date).format('MM月DD日 HH:MM')
 }
+
+const baseUrl = useRuntimeConfig().public.baseUrl
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const dateFormat = (date) => {
         <div class="article-author flex justify-between">
           <div class="left flex">
             <div class="article-author-avatar mr-2">
-              <img class="rounded-md" :src="article?.category_img" alt="avatar">
+              <img class="rounded-md" :src="baseUrl + article?.category_img" alt="avatar">
             </div>
             <div class="article-author-profile flex flex-col justify-between">
               <div class="name text-gray-dark">{{ article?.nickname }}</div>

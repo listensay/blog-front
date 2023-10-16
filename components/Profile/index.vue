@@ -8,21 +8,22 @@ import useHomeStore from '~/store/home';
 
 const homeStore = useHomeStore()
 const { userinfo, userProfile } = storeToRefs(homeStore)
+const baseUrl = useRuntimeConfig().public.baseUrl
 </script>
 
 <template>
   <div class="profile">
     <div class="bg">
-      <img :src="userinfo.bg" alt="bg">
+      <img :src="baseUrl + userinfo?.bg" alt="bg">
     </div>
     <div class="author p-8">
       <div class="photo">
-        <img :src="userinfo.avatar" alt="头像">
+        <img :src="baseUrl + userinfo?.avatar" alt="头像">
       </div>
       <div class="authour-info">
-        <div class="name font-bold text-xl text-gray-dark mb-1">{{ userinfo.nickname }}</div>
-        <div class="email text-sm text-gray flex items-center mb-2"><el-icon style="margin-right: 5px"><Message /></el-icon> {{ userinfo.email }}</div>
-        <div class="desc text-gray-dark text-sm">{{ userinfo.description }}</div>
+        <div class="name font-bold text-xl text-gray-dark mb-1">{{ userinfo?.nickname }}</div>
+        <div class="email text-sm text-gray flex items-center mb-2"><el-icon style="margin-right: 5px"><Message /></el-icon> {{ userinfo?.email }}</div>
+        <div class="desc text-gray-dark text-sm">{{ userinfo?.description }}</div>
         <div class="authour-profiles">
           <client-only>
               <ul class="list mt-5 rounded-sm">

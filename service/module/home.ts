@@ -1,15 +1,15 @@
-import {servers} from '../request'
+import { get } from '../request'
 
 export const useHomeAPI = () => {
   return {
     getArticleList: () => {
-      return servers({ url: '/index/article', method: 'get' })
+      return get('/index/article')
     },
     getUserInfor: () => {
-      return servers({ url: '/index/userinfo', method: 'get' })
+      return get('/index/userinfo')
     },
     getUserProfiles: () => {
-      return servers({ url: '/index/userProfile', method: 'get' })
+      return get('/index/userProfile')
     },
   }
 }

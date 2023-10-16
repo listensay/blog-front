@@ -1,6 +1,16 @@
 import eslintPlugin from 'vite-plugin-eslint'
+import { loadEnv } from 'vite'
+
+const envScript = process?.env?.npm_lifecycle_script?.split(' ')
+const envName = envScript?.[envScript.length - 1] || "" // 通过启动命令区分环境
+const envData = loadEnv(envName, 'env') as any
 
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      baseUrl: envData.VITE_BASE_URL  // env下读取的数据
+    }
+  },
   devServer: {
     port: 8088
   },
@@ -21,8 +31,6 @@ export default defineNuxtConfig({
     '@element-plus/nuxt',
     '@pinia/nuxt',
     // Simple usage
-    '@nuxtjs/eslint-module',
-    // With options
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     'dayjs-nuxt'
