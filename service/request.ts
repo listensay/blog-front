@@ -4,7 +4,7 @@ const fetch = async (url: string, options?: any, headers?: any) => {
 
   try {
     const config = useRuntimeConfig() // 3.0正式版环境变量要从useRuntimeConfig里的public拿
-    const reqUrl = config.public.baseUrl + url // 你的接口地址
+    const reqUrl = config.public.baseUrl.VITE_BASE_URL + url // 你的接口地址
     // 不设置key，始终拿到的都是第一个请求的值，参数一样则不会进行第二次请求
     const key = hash(options + url)
     // 可以设置默认headers例如
