@@ -12,12 +12,7 @@ await homeStore.fetchUserProfile()
       v-for="article in articles"
       :key="article.post_id"
     >
-      <NuxtLink :to="'article/'+article.post_id">
-        <Article 
-          :article="article"
-        >
-        </Article>
-      </NuxtLink>
+      <Article :article="article"></Article>
     </template>
 
   </div>

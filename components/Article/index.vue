@@ -4,6 +4,7 @@ const props = defineProps({
 })
 
 const { article } = toRefs(props)
+
 const dateFormat = (date) => {
   return useDayjs(date).format('MM月DD日 HH:MM')
 }
@@ -26,7 +27,9 @@ const baseUrl = useRuntimeConfig().public.baseUrl
             </div>
           </div>
           <div class="right">
-            <div class="time text-gray text-sm">{{ dateFormat(article.create_date) }}</div>
+            <div class="time text-gray text-sm">
+              {{ dateFormat(article.create_date) }}
+            </div>
           </div>
         </div>
       </div>
