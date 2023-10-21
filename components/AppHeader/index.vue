@@ -24,9 +24,8 @@ const route = useRoute()
         </div>
       </div>
     </div>
-    <template v-if="route.fullPath === '/'">
-      <Profile ></Profile>
-    </template>
+    <Profile ></Profile>
+    <Tab></Tab>
   </div>
 </template>
 

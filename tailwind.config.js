@@ -28,10 +28,10 @@ export default {
       'yellow': '#ffc82c',
       'gray-dark': '#273444',
       'gray': '#8492a6',
-      'gray-light': '#d3dce6',
+      'gray-light': '#eeeeee',
       'white': '#fff',
       'emerald': {
-        50: '#ecfdf5',
+        50: '#F9FAFB',
         100: '#d1fae5',
         200: '#a7f3d0',
         300: '#6ee7b7'
@@ -41,6 +41,22 @@ export default {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
+    screens: {
+      '2xl': { 'max': '1535px' },
+      // => @media (max-width: 1535px) { ... }
+
+      'xl': { 'max': '1279px' },
+      // => @media (max-width: 1279px) { ... }
+
+      'lg': { 'max': '1023px' },
+      // => @media (max-width: 1023px) { ... }
+
+      'md': { 'max': '767px' },
+      // => @media (max-width: 767px) { ... }
+
+      'sm': { 'max': '639px' },
+      // => @media (max-width: 639px) { ... }
+    }
   },
   plugins: [
     require('@tailwindcss/typography')

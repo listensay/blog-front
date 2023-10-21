@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="layout m-auto shadow bg-red-500 bg-white rounded my-8">
+  <div class="w-[640px] my-8 mx-auto shadow bg-red-500 bg-white rounded md:w-full md:my-0">
     <AppHeader></AppHeader>
     <div>
       <slot></slot>
@@ -13,8 +13,4 @@
 </template>
 
 <style lang="less" scoped>
-.layout {
-  width: 650px;
-  margin-top: 20px;
-}
 </style>

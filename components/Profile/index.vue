@@ -47,7 +47,7 @@ const baseUrl = useRuntimeConfig().public.baseUrl
   border-bottom: 1px solid #eee;
   .bg {
     img {
-      height: 250px;
+      height: 200px;
       object-fit: cover;
       width: 100%;
     }
