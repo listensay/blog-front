@@ -1,16 +1,24 @@
 <script setup>
 const tabs = ref([
-  { name: '日志', path: '' },
-  { name: '专题', path: 'category' },
-  { name: '说说', path: '' },
-  { name: '相册', path: '' },
+  { name: '日志', path: '/index' },
+  { name: '专题', path: '/category' },
+  { name: '邻居', path: '/links' }
+  // { name: '说说', path: '' },
+  // { name: '相册', path: '' },
 ])
 
 const currentTableIndex = ref(0)
 
 const changeTable = async (index, path) => {
   currentTableIndex.value = index
-  await navigateTo({ path: '/' + path })
+  await navigateTo({ path })
+}
+
+const route = useRoute()
+const path = route.fullPath
+const result = tabs.value.findIndex(item => item.path === path)
+if (result !== -1) {
+  currentTableIndex.value = result
 }
 </script>
 

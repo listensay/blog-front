@@ -40,6 +40,10 @@ export default defineNuxtConfig({
     'dayjs-nuxt',
     'nuxt-simple-sitemap'
   ],
+  routeRules: {
+    // 设置重定向
+    '/': { redirect: '/index' },
+  },
   app: {
     // 可以给所有的页面的head添加一下SEO的信息
     head: {

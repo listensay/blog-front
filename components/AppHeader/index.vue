@@ -8,11 +8,11 @@ const route = useRoute()
     <div class="navbar px-8">
       <div class="text-black flex items-center justify-between">
         <div>
-          <template v-if="route.fullPath === '/'">
+          <template v-if="route.fullPath === '/index'">
             <span>听的说个人空间</span>
           </template>
           <template v-else>
-            <NuxtLink to="/">
+            <NuxtLink to="/index">
               <div class="flex flex-row items-center">
                 <el-icon class="mr-1"><ArrowLeft /></el-icon> <span>返回</span>
               </div>
