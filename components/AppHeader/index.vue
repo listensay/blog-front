@@ -25,7 +25,6 @@ const route = useRoute()
       </div>
     </div>
     <Profile ></Profile>
-    <Tab></Tab>
   </div>
 </template>
 

@@ -13,7 +13,7 @@ const baseUrl = useRuntimeConfig().public.baseUrl
 
 <template>
   <div class="profile">
-    <div class="bg">
+    <div class="bg brightness-[.8]">
       <img :src="baseUrl + userinfo?.bg" alt="bg">
     </div>
     <div class="author p-8">
@@ -21,7 +21,7 @@ const baseUrl = useRuntimeConfig().public.baseUrl
         <img :src="baseUrl + userinfo?.avatar" alt="头像">
       </div>
       <div class="authour-info">
-        <div class="name font-bold text-xl text-gray-dark mb-1">{{ userinfo?.nickname }}</div>
+        <div class="name text-xl text-gray-dark mb-1">{{ userinfo?.nickname }}</div>
         <div class="email text-sm text-gray flex items-center mb-2"><el-icon style="margin-right: 5px"><Message /></el-icon> {{ userinfo?.email }}</div>
         <div class="desc text-gray-dark text-sm">{{ userinfo?.description }}</div>
         <div class="authour-profiles">
@@ -29,7 +29,7 @@ const baseUrl = useRuntimeConfig().public.baseUrl
               <ul class="list mt-5 rounded-sm">
                 <li
                   v-for="(profile, index) in userProfile?.profile" :key="index"
-                  class="item p-5 border-1 flex items-center"
+                  class="item p-4 border-1 flex items-center"
                 >
                   <i class="iconfont mr-2" :class="profile.icon"></i>
                   <span class="first text-sm mr-2">{{ profile.first }} :</span> <span class="last text-sm">{{ profile.last }}</span>
@@ -39,12 +39,12 @@ const baseUrl = useRuntimeConfig().public.baseUrl
         </div>
       </div>
     </div>
+    <Tab></Tab>
   </div>
 </template>
 
 <style lang="less" scoped>
 .profile {
-  border-bottom: 1px solid #eee;
   .bg {
     img {
       height: 200px;

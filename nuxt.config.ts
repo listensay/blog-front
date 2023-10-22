@@ -6,6 +6,10 @@ const envName = envScript?.[envScript.length - 1] || "" // 通过启动命令区
 const envData = loadEnv(envName, 'env') as any
 
 export default defineNuxtConfig({
+  sitemap: {
+    xsl: false,
+    autoLastmod: true
+  },
   runtimeConfig: {
     public: {
       baseUrl: envData.VITE_BASE_URL  // env下读取的数据
@@ -33,7 +37,8 @@ export default defineNuxtConfig({
     // Simple usage
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
-    'dayjs-nuxt'
+    'dayjs-nuxt',
+    'nuxt-simple-sitemap'
   ],
   app: {
     // 可以给所有的页面的head添加一下SEO的信息

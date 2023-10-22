@@ -3,7 +3,6 @@ import { storeToRefs } from 'pinia';
 import useHomeStore from '@/store/home'
 const homeStore = useHomeStore()
 const { articles } = storeToRefs(homeStore)
-await homeStore.fetchUserProfile()
 </script>
 
 <template>

@@ -1,14 +1,17 @@
 <script lang="ts" setup>
-
+import useHomeStore from '@/store/home'
+const homeStore = useHomeStore()
+await homeStore.fetchUserProfile()
 </script>
 
 <template>
-  <div class="w-[640px] my-8 mx-auto shadow bg-red-500 bg-white rounded md:w-full md:my-0">
+  <div class="my-2 w-[640px] mx-auto shadow bg-red-500 bg-white md:w-full md:my-0 rounded">
     <AppHeader></AppHeader>
     <div>
       <slot></slot>
     </div>
     <AppFooter></AppFooter>
+    <el-backtop :right="100" :bottom="100" />
   </div>
 </template>
 

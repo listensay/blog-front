@@ -28,7 +28,10 @@ export default {
       'yellow': '#ffc82c',
       'gray-dark': '#273444',
       'gray': '#8492a6',
-      'gray-light': '#eeeeee',
+      'gray-light': {
+        50: '#f5f5f5',
+        100: '#f4f4f5'
+      },
       'white': '#fff',
       'emerald': {
         50: '#F9FAFB',
@@ -56,6 +59,10 @@ export default {
 
       'sm': { 'max': '639px' },
       // => @media (max-width: 639px) { ... }
+    },
+    brightness: {
+      25: '.25',
+      175: '1.75',
     }
   },
   plugins: [

@@ -16,10 +16,10 @@ const changeTable = async (index, path) => {
 
 <template>
   <div class="tab">
-    <ul class="flex items-center justify-center h-12 text-gray-dark border-gray-light border-b-[1px]">
+    <ul class="flex items-center justify-center h-12 text-gray-dark border-gray-light-50 border-b-[1px]">
       <li
         v-for="(tab, index) in tabs" :key="tab.path"
-        class="relative flex items-center h-full px-6 cursor-pointer font-bold"
+        class="relative flex items-center h-full px-6 cursor-pointer"
         :class="{ active: currentTableIndex === index }"
         @click="changeTable(index, tab.path)"
       >{{ tab.name }}</li>
